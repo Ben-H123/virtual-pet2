@@ -92,4 +92,37 @@ describe('gives pet a checkup', () => {
         pet.hunger = 4;
         expect(pet.checkUp()).toBe('I feel great!')
     });
+
+describe('tells you if your pet is alive', () => {
+    it('tells you if your pet is alive - fitness', () => {
+        const pet = new Pet('fido');
+
+        pet.fitness = 0;
+        expect(pet.isAlive).toBe(false);
+    });
+
+    it('tells you if your pet is alive - hunger', () => {
+        const pet = new Pet('fido');
+
+        pet.hunger = 12;
+        expect(pet.isAlive).toBe(false);
+    });
+
+    it('tells you if your pet is alive - age', () => {
+        const pet = new Pet('fido');
+
+        pet.age = 35;
+        expect(pet.isAlive).toBe(false);
+    });
+
+    it('tells you if your pet is alive - everything', () => {
+        const pet = new Pet('fido');
+
+        pet.fitness = 8;
+        pet.age = 20;
+        pet.hunger = 3;
+        expect(pet.isAlive).toBe(true);
+    });
+
+});
 })

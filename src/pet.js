@@ -6,7 +6,13 @@ function Pet(name) {
     this.age = 0;
     this.hunger = 0;
     this.fitness = MAXIMUM_FITNESS;
-}
+};
+
+Pet.prototype = {
+    get isAlive() {
+        return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+    }
+};
 
 Pet.prototype.growUp = function() {
     this.age += 1;
@@ -27,7 +33,7 @@ Pet.prototype.checkUp = function() {
     const isHungry = this.hunger >= 5;
     const iAmHungry = "I am hungry";
     const iNeedAWalk = "I need a walk";
-    
+
     if(isUnfit && isHungry) {
         return `${iAmHungry} AND ${iNeedAWalk}`
       }
