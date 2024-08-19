@@ -61,3 +61,35 @@ describe('walk', () => {
         expect(pet.fitness).toEqual(10);
     });
 });
+
+describe('gives pet a checkup', () => {
+    it('Says pet needs a walk if fitness is too low', () => {
+        const pet = new Pet('fido');
+
+        pet.fitness = 2;
+        expect(pet.checkUp()).toBe('I need a walk');
+    });
+
+    it('Says pet is hungry if hunger is too high', () => {
+        const pet = new Pet('fido');
+
+        pet.hunger = 6;
+        expect(pet.checkUp()).toBe('I am hungry');
+    });
+
+    it('Says pet is hungry and needs a walk as well', () => {
+        const pet = new Pet('fido');
+
+        pet.fitness = 2;
+        pet.hunger = 6;
+        expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+    });
+
+    it('Says that pet feels great', () => {
+        const pet = new Pet('fido');
+
+        pet.fitness = 4;
+        pet.hunger = 4;
+        expect(pet.checkUp()).toBe('I feel great!')
+    });
+})
