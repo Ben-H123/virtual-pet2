@@ -176,5 +176,25 @@ describe('tells you if your pet is alive', () => {
         expect(pet.isAlive).toBe(true);
     });
 
+describe('Checking if pet has had a baby', () => {
+    it('has had a baby', () => {
+        const parent = new Pet('fido');
+        parent.haveBaby('Amelia');
+        parent.haveBaby('Daniel');
+
+        expect(parent.children[0].name).toEqual("Amelia");
+        expect(parent.children[1].name).toEqual("Daniel");
+        expect(parent.children[0]).toBeInstanceOf(Pet);
+    });
+
+    it('can adopt a baby', () => {
+        const parent = new Pet('fido');
+        const child = new Pet('Ben');
+        parent.adopt(child);
+
+        expect(parent.children[0]).toBe(child);
+    });
+});
+
 });
 })
